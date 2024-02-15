@@ -1,0 +1,38 @@
+.seatsContainer {
+    display: grid;
+    grid-template-columns: repeat(10, 120px); 
+    gap: 5px; 
+    justify-content: space-around;
+    margin: 120px 60px 120px 60px;
+  }
+  
+  .screen{
+    width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: aqua;
+    height: 180px;
+    margin: 120px auto;
+    border: 2px solid black;
+  }
+
+  .seatHold{
+    background-color: rgb(18, 88, 179);
+    border-color:2px #242323;
+    border-radius: 5px; 
+    cursor: pointer;
+  }
+  .seatAvailable {
+    background-color: #bada55;
+    border-color:2px #242323;
+    border-radius: 5px; 
+    cursor: pointer;
+  }
+  
+  .seatReserved {
+    background-color: #ff0000;
+    cursor: not-allowed;
+    border-color:2px #242323;
+    border-radius: 5px; 
+  }

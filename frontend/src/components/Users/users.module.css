@@ -1,0 +1,17 @@
+.nav{
+    padding: 16px 32px;
+    background-color: rgb(236, 155, 34);
+}
+
+.nav a{
+    margin-right: 20px;
+    font-size: large;
+}
+
+.nav a:hover{
+    background-color: rgb(182, 32, 193);
+}
+.nav a:active{
+    text-decoration: underline;
+    font-weight:bolder;
+}
