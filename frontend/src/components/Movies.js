@@ -1,20 +1,22 @@
-import { Button,Box, Image, Text, Center } from '@chakra-ui/react'
 import React from 'react'
+import { Button,Box, Image, Text, Center } from '@chakra-ui/react'
+
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from './AuthProvider'
 
-const Shows = ({movie}) => {
-  const navigate=useNavigate()
-  const auth=useAuth()
+const Movies = ({movie}) => {
+    const auth=useAuth()
+    const navigate=useNavigate();
   return (
-    
-    <Box
+    <div>
+        
+        <Box
         maxW="md"
         borderWidth="1px"
         borderRadius="lg"
         overflow="hidden"
-        boxShadow="lg"
         objectFit='contain'
+        boxShadow="lg"
         mt="10px"
         ml="110px"
         mb="60px"
@@ -26,18 +28,20 @@ const Shows = ({movie}) => {
         <Image src={movie.movie_url} alt={movie.movie_name} width="446px" height='460px'  objectFit="contain" />
         </Center>
        </Box>
-        <Box padding='10px' >
+        <Box padding='10px'>
             <strong>{movie.movie_name}</strong>
           <Text fontSize="sl" color="black">
             {movie.description}
           </Text>
-        <center><Button margin='auto' bottom='auto' onClick={()=>{
-            auth.title(movie.movie_name)
-            auth.isUser?navigate(`/users/getScreens/${movie.movie_id}`):navigate(`/admins/getScreens/${movie.movie_id}`)
-            }} colorScheme="blue">View Screens</Button></center>
+        <center><Button bottom='auto' margin='auto'onClick={()=>{
+           auth.title(movie.movie_name)
+           navigate(`/admins/addShow/${movie.movie_id}`)
+           }} colorScheme="blue">Add Shows</Button></center>
         </Box>
       </Box>
+    </div>
   )
 }
 
-export default Shows
+
+export default Movies

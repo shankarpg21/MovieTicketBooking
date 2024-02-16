@@ -9,12 +9,12 @@ const Users = () => {
     <div>
       <nav className={styles.nav}>
       {
-                !auth.user && (
+                (!auth.user||!auth.isUser) && (
                     <NavLink to='login'>Login</NavLink>
                 )
             }
             {
-                !auth.user && (
+                (!auth.user||!auth.isUser) && (
                     <NavLink to='register'>Register</NavLink>
                 )
             }

@@ -40,7 +40,6 @@ const GetSeats = () => {
             setFlag(flag-1);
             document.getElementById(i).className=styles.seatAvailable
         } else {
-          console.log(i);
             updatedBook.add(i);
             setFlag(flag+1);
             document.getElementById(i).className=styles.seatHold

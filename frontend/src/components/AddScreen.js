@@ -36,8 +36,8 @@ import { useAuth } from './AuthProvider';
     alert("Screen Added successfully")
     setScreenInfo({screen_id: '',
     no_of_seats: 0,
-    }).catch(e=>alert(e.response.data))
-  })
+    })
+  }).catch(e=>alert(e.response.data))
   };
 
   return (
@@ -64,7 +64,7 @@ import { useAuth } from './AuthProvider';
               type="text"
               name="screen_id"
               placeholder="Enter Screen ID"
-              value={screenInfo.show_id}
+              value={screenInfo.screen_id}
               onChange={handleChange}
               variant="filled"
             />

@@ -10,12 +10,13 @@ import {
 } from '@chakra-ui/react';
 import axios from 'axios';
 import { useAuth } from './AuthProvider';
+import { useNavigate, useParams } from 'react-router-dom';
 
  const AddShows = () => {
+  const params=useParams()
   const [showInfo, setShowInfo] = useState({
     show_id:'',
     screen_id: '',
-    movie_id: '',
     price:0,
     date: '',
     time: '',
@@ -30,14 +31,13 @@ import { useAuth } from './AuthProvider';
     }));
   };
 
-
+  const navigate=useNavigate();
   const auth=useAuth();
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('/admins/addShow',
+    axios.post(`/admins/addShow/${params.movie_id}`,
     {"show_id":showInfo.show_id,
       "screen_id":showInfo.screen_id,
-    "movie_id":showInfo.movie_id,
     "price":showInfo.price,
     "date":showInfo.date,
     "time":showInfo.time
@@ -47,9 +47,9 @@ import { useAuth } from './AuthProvider';
       show_id:'',
       screen_id: '',
       price:0,
-    movie_id: '',
     date: '',
     time: '',})
+    navigate(`/admins/getScreens/${params.movie_id}`)
   }).catch(e=>alert(e.response.data))
   };
 
@@ -90,18 +90,6 @@ import { useAuth } from './AuthProvider';
               name="screen_id"
               placeholder="Enter Screen ID"
               value={showInfo.screen_id}
-              onChange={handleChange}
-              variant="filled"
-            />
-          </FormControl>
-
-          <FormControl mb="4" isRequired>
-            <FormLabel>Movie ID</FormLabel>
-            <Input
-              type="text"
-              name="movie_id"
-              placeholder="Enter Movie ID"
-              value={showInfo.movie_id}
               onChange={handleChange}
               variant="filled"
             />

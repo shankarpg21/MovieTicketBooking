@@ -12,7 +12,7 @@ import {
     Text,
     Td,
     Center,
-    TableCaption
+    TableCaption,
   } from '@chakra-ui/react'
 import moment from "moment";
 
@@ -40,10 +40,14 @@ const ViewBookings = () => {
     }
       fetch()
   }, [params.show_id,auth.token]);
+
+
+  
   return (
     <div>
       {!load && <Text textAlign="center" fontSize="xx-large">Loading...</Text>}
-      {load && 
+      {load && info.length===0 && <Text textAlign="center" fontSize="xx-large">No Bookings started yet</Text>}
+      {load  && 
         <Box overflowX="auto">
           <Center>
         <Table variant="striped" colorScheme="teal" mt="20px" borderWidth="1px" borderRadius="lg">

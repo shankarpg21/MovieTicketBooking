@@ -25,7 +25,7 @@ const login=asyncHandler(async(req,res)=>{
     }
 })
 
-const addScreen=asyncHandler(async(req,res)=>{ //fine
+const addScreen=asyncHandler(async(req,res)=>{ 
     const {screen_id,no_of_seats}=req.body;
     if(!screen_id||!no_of_seats){
         return res.status(400).send("All fields are mandatory")
@@ -40,7 +40,7 @@ const addScreen=asyncHandler(async(req,res)=>{ //fine
 })
 
 
-const addMovie=asyncHandler(async(req,res)=>{ //fine
+const addMovie=asyncHandler(async(req,res)=>{ 
     const {movie_id,movie_name,description,movie_url}=req.body;
     try{
         if(!movie_id||!movie_name||!description||!movie_url){
@@ -55,8 +55,9 @@ const addMovie=asyncHandler(async(req,res)=>{ //fine
     
 })
 
-const addShows=asyncHandler(async(req,res)=>{ //fine
-    const {show_id,screen_id,movie_id,date,time,price}=req.body;
+const addShows=asyncHandler(async(req,res)=>{ 
+    const movie_id=req.params.movie_id
+    const {show_id,screen_id,date,time,price}=req.body;
     try{
         if(!show_id||!screen_id||!movie_id||!date||!time||!price){
             return res.status(401).send("All fields are mandatory");
@@ -83,7 +84,7 @@ const addShows=asyncHandler(async(req,res)=>{ //fine
     }
 })
 
-const getShows=asyncHandler(async(req,res)=>{ //clarify
+const getShows=asyncHandler(async(req,res)=>{ 
     try{
         const msg=await Movies.aggregate([
             {
@@ -114,7 +115,17 @@ const getShows=asyncHandler(async(req,res)=>{ //clarify
     }
 })
 
-const viewTicket=asyncHandler(async(req,res)=>{ //fine
+const getMovies=asyncHandler(async(req,res)=>{
+    try{
+        const msg=await Movies.find({})
+        res.status(200).send(msg);
+    }
+    catch(e){
+        res.status(400).send(e)
+    }
+})
+
+const viewTicket=asyncHandler(async(req,res)=>{ 
     try{
         const show_id=req.params.show_id;
         if(!show_id){
@@ -159,4 +170,4 @@ const viewTicket=asyncHandler(async(req,res)=>{ //fine
     }
 })
 
-module.exports={login,addScreen,addShows,getShows,addMovie,viewTicket};
+module.exports={login,addScreen,addShows,getShows,addMovie,viewTicket,getMovies};

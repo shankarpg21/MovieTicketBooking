@@ -14,7 +14,7 @@ const Users = () => {
             }
             <NavLink to='addMovie'>AddMovies</NavLink>
             <NavLink to='addScreen'>AddScreen</NavLink>
-            <NavLink to='addShow'>AddShow</NavLink>
+            <NavLink to='getMovies'>Movies</NavLink>
             <NavLink to='getShows'>Shows</NavLink>
             {
                 auth.token && (<NavLink to='profile'>Profile</NavLink>)

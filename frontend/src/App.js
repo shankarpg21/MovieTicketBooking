@@ -25,6 +25,7 @@ import GetScreens from './components/GetScreens';
 import GetSeats from './components/GetSeats/GetSeats';
 import Success from './components/Success/Success';
 import ViewBookings from './components/ViewBookings';
+import GetMovies from './components/GetMovies';
 const { Button } = chakraTheme.components
 
 const theme = extendBaseTheme({
@@ -54,7 +55,8 @@ function App() {
         <Route index='login' element={<AdminLogin/>}/>
           <Route path='login' element={<AdminLogin/>}/>
           <Route path='addMovie' element={<RequireAdminAuth><AddMovie/></RequireAdminAuth>}/>
-          <Route path='addShow' element={<RequireAdminAuth><AddShows/></RequireAdminAuth>}/>
+          <Route path='getMovies' element={<RequireAdminAuth><GetMovies/></RequireAdminAuth>}/>
+          <Route path='addShow/:movie_id' element={<RequireAdminAuth><AddShows/></RequireAdminAuth>}/>
           <Route path='getShows' element={<GetShows/>}/>
           <Route path='getScreens/:id' element={<GetScreens/>}/>
           <Route path='bookings/:show_id' element={<RequireAdminAuth><ViewBookings/></RequireAdminAuth>}/>
