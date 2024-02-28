@@ -131,38 +131,13 @@ const viewTicket=asyncHandler(async(req,res)=>{
         if(!show_id){
             return res.status(400).send("Mention show id");
         }
-        const msg=await Bookings.aggregate([
-            {$match:{'show_id':show_id}},
-          {$lookup:{
-            localField:'show_id',
-            foreignField:'show_id',
-            from:'shows',
-            as:'showDetails'
-          }},
-          {$unwind:`$showDetails`},
-          {
-            $lookup:{
-                localField:'movie_id',
-                foreignField:'showDetails.movie_id',
-                from:'movies',
-                as:'movieDetails'
-            }
-          },{
-            $unwind:`$movieDetails`
-          },
-          {$group:{
-            '_id':"$_id",
-            show_id:{$first:`$show_id`},
-            user_id:{$first:`$user_id`},
-            screen_id:{$first:`$showDetails.screen_id`},
-            movie_name:{$first:'$movieDetails.movie_name'},
-            bookedSeats:{$first:'$bookedSeats'},
-            date:{$first:'$date'},
-            time:{$first:'$time'}
-          }}
-        ])
-       
-        res.status(200).json(msg)
+        const chk=await Shows.find({'show_id':show_id});
+        if(!chk) return res.status(400).send('No shows exists on that id');
+        const movie_id=chk[0].movie_id;
+        const info=await Movies.find({'movie_id':movie_id});
+        const msg=await Bookings.find({"show_id":show_id})
+        let movie_name=info[0].movie_name;
+        res.status(200).json({msg,movie_name})
     }
     catch(e){
         console.log(e)

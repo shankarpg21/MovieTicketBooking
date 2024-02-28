@@ -14,8 +14,11 @@ const validateTokenHanlder=(req,res,next)=>{
                 next();
             })
             if(!token){
-                res.status(400).send("Token is expired");
+                return res.status(400).send("Token is expired");
             }
+        }
+        else{
+            return res.status(400).send("Token is not passed");
         }
     }
     catch(e){

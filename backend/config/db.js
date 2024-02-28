@@ -1,8 +1,7 @@
-/* connection with databse */
 const asyncHandler=require("express-async-handler");
 const mongoose=require('mongoose');
 
-const connectDb=async()=>{
+const conn=async()=>{
     try{
         const con=await mongoose.connect(process.env.MONGODB_URL);
         console.log("Database connected");
@@ -12,4 +11,4 @@ const connectDb=async()=>{
     }
 }
 
-module.exports=connectDb
+module.exports=conn

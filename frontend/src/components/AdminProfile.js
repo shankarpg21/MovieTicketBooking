@@ -24,7 +24,7 @@ const Profile = () => {
         <VStack mt="4" spacing="2">
           <Badge colorScheme="green">Active</Badge>
         </VStack>
-        <Center><Button colorScheme='green' onClick={()=>auth.logout()}>Logout</Button></Center>
+        <Center><Button mt="4" colorScheme='green' onClick={()=>auth.logout()}>Logout</Button></Center>
       </Box>
       </ChakraProvider>
   );

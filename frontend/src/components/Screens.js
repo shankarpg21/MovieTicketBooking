@@ -30,7 +30,7 @@ const Screens = ({screen}) => {
           
             <strong>Screen Id:{screen.screen_id}</strong>
             <br></br>
-            <strong>Date:{moment(screen.date).utc().format('YYYY-MM-DD')}</strong>
+            <strong>Date:{moment(new Date(screen.date)).format('DD/MM/YYYY')}</strong>
             <br/>
             <strong>Time:{moment(screen.time,'HH:mm').format('h:mm A')}</strong>
             <br/>

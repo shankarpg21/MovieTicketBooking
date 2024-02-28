@@ -35,7 +35,7 @@ const Tickets = ({ticket}) => {
             <span style={spanStyle}>Screen Id</span>:{ticket.screen_id}
           </Text>
           <Text fontSize="sl" color="black">
-          <span style={spanStyle}>Date</span>:{moment(ticket.date).format('DD-MM-YYYY')}
+          <span style={spanStyle}>Date</span>:{moment(new Date(ticket.date)).format('DD/MM/YYYY')}
           </Text>
           <Text fontSize="sl" color="black">
           <span style={spanStyle}>Time</span>:{moment(ticket.time,'HH:mm').format('h:mm A')}
